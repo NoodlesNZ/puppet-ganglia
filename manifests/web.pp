@@ -3,6 +3,7 @@
 class ganglia::web(
   $ganglia_ip   = '127.0.0.1',
   $ganglia_port = 8652,
+  $rrdcached_socket = undef,
 ) inherits ganglia::params {
   validate_string($ganglia_ip)
   if !(is_string($ganglia_port) or is_integer($ganglia_port)) {
