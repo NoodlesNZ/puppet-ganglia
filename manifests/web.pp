@@ -3,6 +3,7 @@
 class ganglia::web(
   $ganglia_ip   = '127.0.0.1',
   $ganglia_port = 8652,
+  $web_php_erb = $::ganglia::params::web_php_erb,
   $rrdcached_socket = undef,
 ) inherits ganglia::params {
   validate_string($ganglia_ip)
@@ -30,6 +31,6 @@ class ganglia::web(
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => template($::ganglia::params::web_php_erb),
+    content => template($web_php_erb),
   }
 }
